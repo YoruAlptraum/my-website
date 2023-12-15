@@ -14,9 +14,9 @@
 <div class="hero">
     <div class="info">
         <h1>Yoru Alptraum</h1>
-        <h2>Software Developer w{width}h{height}</h2>
+        <h2>Software Developer</h2>
     </div>
     <div id="anim">
-        <Cube w={width*0.4} h={height*0.4} color="#6900FD"/>
+        <Cube w={500} h={500} color="#6900FD"/>
     </div>
 </div>

@@ -24,7 +24,12 @@ body {
 
 #anim {
     position: absolute;
-    transform: translate(45vw, -23vw);
+    transform: translate(45vw, -28vw);
     z-index: -1;
     margin: auto;
+}
+
+#cube {
+    width: 35vw;
+    height: 35vw;
 }

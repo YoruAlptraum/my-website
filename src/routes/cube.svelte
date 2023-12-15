@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte';
 
-    export let w = 500;
-    export let h = 300;
+    export let w = 400;
+    export let h = 400;
     export let color = "purple";
 
     // constants
@@ -104,4 +104,4 @@
     }
 </script>
 
-<canvas bind:this={canvas} width={w} height={h}></canvas>
+<canvas id='cube' bind:this={canvas} width={w} height={h}></canvas>
