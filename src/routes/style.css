@@ -5,7 +5,6 @@
 }
 
 body {
-    margin:0;
     background-color: black;
     color: #fff;
 }
@@ -33,4 +32,20 @@ body {
 #cube {
     width: 35vw;
     height: 35vw;
+}
+
+.contact_me{
+    width: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 10%;
+    bottom: 0;
+    gap: 5px;
+}
+
+.icon{
+    min-width: 25px;
+    width: 2vw;
+    aspect-ratio: 1/1;
 }
