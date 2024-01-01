@@ -1,8 +1,10 @@
 
 <script>
     import { onMount } from 'svelte';
+    let title_list = ['Software development','Web development','Web scraping'];
+    let cur_title = 0;
 
-    export let title = 'Title goes here!';
+    let title = title_list[0];
     let titleDisp = '';
     let timeLast = 0;
     let count = 1;
@@ -27,6 +29,8 @@
 
         if(count > (title.length * 2) + waitTime * 2){
             count = 1;
+            title = title_list[cur_title%title_list.length];
+            cur_title += 1;
         }
         
         requestAnimationFrame(loop);
