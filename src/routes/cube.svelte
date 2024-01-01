@@ -6,9 +6,9 @@
     export let color = "purple";
 
     // constants
-    const SPEED_X = 0.05; // rps
-    const SPEED_Y = 0.15; // rps
-    const SPEED_Z = 0.10; // rps
+    const SPEED_X = 0.06; // rps
+    const SPEED_Y = 0.06; // rps
+    const SPEED_Z = 0.06; // rps
     const POINT3D = function(x, y, z) { this.x = x; this.y = y; this.z = z; };
 
     // cube parameters
@@ -54,42 +54,48 @@
         // calculate the time difference
         timeDelta = timeNow - timeLast;
         timeLast = timeNow;
-
+        
         // background
         ctx.clearRect(0, 0, w, h);
 
         // rotate the cube along the z axis
-        let angle = timeDelta * 0.001 * SPEED_Z * Math.PI * 2;
+        let anglez = timeDelta * 0.001 * SPEED_Z * Math.PI * 2;
         for (let v of vertices) {
             let dx = v.x - cx;
             let dy = v.y - cy;
-            let x = dx * Math.cos(angle) - dy * Math.sin(angle);
-            let y = dx * Math.sin(angle) + dy * Math.cos(angle);
+            let x = dx * Math.cos(anglez) - dy * Math.sin(anglez);
+            let y = dx * Math.sin(anglez) + dy * Math.cos(anglez);
             v.x = x + cx;
             v.y = y + cy;
         }
 
         // rotate the cube along the x axis
-        angle = timeDelta * 0.001 * SPEED_X * Math.PI * 2;
+        let anglex = timeDelta * 0.001 * SPEED_X * Math.PI * 2;
         for (let v of vertices) {
             let dy = v.y - cy;
             let dz = v.z - cz;
-            let y = dy * Math.cos(angle) - dz * Math.sin(angle);
-            let z = dy * Math.sin(angle) + dz * Math.cos(angle);
+            let y = dy * Math.cos(anglex) - dz * Math.sin(anglex);
+            let z = dy * Math.sin(anglex) + dz * Math.cos(anglex);
             v.y = y + cy;
             v.z = z + cz;
         }
 
         // rotate the cube along the y axis
-        angle = timeDelta * 0.001 * SPEED_Y * Math.PI * 2;
+        let angley = timeDelta * 0.001 * SPEED_Y * Math.PI * 2;
         for (let v of vertices) {
             let dx = v.x - cx;
             let dz = v.z - cz;
-            let x = dz * Math.sin(angle) + dx * Math.cos(angle);
-            let z = dz * Math.cos(angle) - dx * Math.sin(angle);
+            let x = dz * Math.sin(angley) + dx * Math.cos(angley);
+            let z = dz * Math.cos(angley) - dx * Math.sin(angley);
             v.x = x + cx;
             v.z = z + cz;
         }
+
+        // h: 0-360, s: 0-100%, l:0-100%        
+        let hsl_color = `hsl(${vertices[0].z},${80}%,${50}%)`
+
+        //console.log(hsl_color)
+        ctx.strokeStyle = hsl_color;
 
         // draw each edge
         for (let edge of edges) {
