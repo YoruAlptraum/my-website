@@ -1,20 +1,50 @@
+
+:root {
+    --bg-color: #020617;
+    --bg-light: #1e293b;
+
+    --radial1: #2979ff;
+    --radial2: #38b6ff;
+    --radial3: #2afc98;
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth !important;
+    scroll-snap-type: y mandatory;
 }
 
 body {
-    background-color:  #020617;
-    color: #fff;
+    background-color:  var(--bg-color); 
+    overflow: hidden;
 }
 
 .wrapper {
-    margin: 10vh;
+    overflow-y: scroll;
 }
 
-#hero {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Was trying to change the scroll to be similar to the firefox scroll but ended up deciding to just disable the scroll-bar altogether, but this seems to be still required for some functions on the new scrolling*/
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track:hover{
+  background: #BDBDBD20;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #6E6E6E;
+  border-radius: 20px;
+}
+
+section {
+    height: 100vh;
+    padding: 20vh 10vw;
+	scroll-snap-align: center;
 }
 
 .center-piece {
@@ -22,6 +52,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 3;
 }
 
 .info {
@@ -30,6 +61,10 @@ body {
 
 .info h1{
     font-size: 5vw;
+    pointer-events: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .info h2{
@@ -46,21 +81,41 @@ body {
 
 #cube {
     width: 40vw;
-    height: 40vw;
+    aspect-ratio: 1;
 }
 
-.contact_me{
-    width: 2rem;
+/* socials */
+
+.icons{
     display: flex;
     flex-direction: column;
     position: fixed;
+    padding: 1vh;
+    top: 50%;
     left: 3%;
-    top: calc(50% - 1rem);
-    gap: 5px;
+    transform: translateY(-50%);
+    gap: .5vh;
+    z-index: 2;
+    min-width: 30px;
+    justify-content: center;
+
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    background-color: #02061730;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
 }
 
-.icon{
+.icon {
+    color: #ccc;
     min-width: 25px;
     width: 2vw;
     aspect-ratio: 1/1;
+}
+
+.icon svg:hover {
+    transform: scale(1.1);
+    transition: .1s ease-in-out;
+    color: #fff;
 }

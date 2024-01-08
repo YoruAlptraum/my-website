@@ -1,3 +1,13 @@
+<style>
+    .title-disp{
+        pointer-events: none;
+        cursor: none;
+        
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+</style>
 
 <script>
     import { onMount } from 'svelte';
@@ -37,4 +47,4 @@
     }
 </script>
 
-<h2 class='title_disp'>{titleDisp + '|'}</h2>
+<h2 class='title-disp'>{titleDisp + '|'}</h2>
