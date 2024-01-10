@@ -7,6 +7,10 @@
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
     }
+    
+    h2{
+        font-size: 3vw;
+    }
 </style>
 
 <script>

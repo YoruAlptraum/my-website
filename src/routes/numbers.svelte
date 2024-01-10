@@ -23,6 +23,8 @@
             #ffffff25, 
             transparent
         );
+        font-size: 1.5vw;
+        font-weight: 350;
         opacity: 0;
         z-index: 1;
         transition: opacity 1s;
@@ -40,7 +42,7 @@
             var(--radial2),
             var(--radial3)
         );
-        mix-blend-mode: darken; 
+        mix-blend-mode: darken;
         z-index: 2;
     }
 
@@ -61,10 +63,18 @@
         
         const htmelement = document.querySelector('html');
         htmelement.addEventListener('mousemove', handleMove);
-        htmelement.addEventListener('mouseenter',()=>{
+        htmelement.addEventListener('mousemove',()=>{
             nums.style.opacity = '1';
-        });
+        }); 
         htmelement.addEventListener('mouseleave',()=>{
+            nums.style.opacity = '0';
+        });
+        // handle touch for mobile devices
+        htmelement.addEventListener('touchmove', handleMove);
+        htmelement.addEventListener('touchmove',()=>{
+            nums.style.opacity = '1';
+        }); 
+        htmelement.addEventListener('touchend',()=>{
             nums.style.opacity = '0';
         });
     })
@@ -72,12 +82,12 @@
     const handleMove = e =>{
         // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
         const rect = nums.getBoundingClientRect(),
-            x = e.clientX, 
-            y = e.clientY;
+            x = e.clientX - rect.x, 
+            y = e.clientY - rect.y;
 
         nums.style.setProperty("--x", `${x}px`);
         nums.style.setProperty("--y", `${y}px`);
-        nums.innerText = randStr(9999);
+        nums.innerText = randStr(77777);
 
     };
 

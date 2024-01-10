@@ -115,4 +115,11 @@
     }
 </script>
 
+<style>    
+    #cube {
+        width: 40vw;
+        aspect-ratio: 1;
+    }
+</style>
+
 <canvas id='cube' bind:this={canvas} width={w} height={h}></canvas>
