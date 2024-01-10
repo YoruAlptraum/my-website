@@ -23,7 +23,7 @@
             #ffffff25, 
             transparent
         );
-        font-size: 1.5vw;
+        font-size: 2.5vh;
         font-weight: 350;
         opacity: 0;
         z-index: 1;
@@ -59,35 +59,61 @@
 
     onMount(()=>{
         nums = document.querySelector('#numbers');
-        nums.innerText = randStr(9999);
+        nums.innerText = randStr(4000);
         
         const htmelement = document.querySelector('html');
         htmelement.addEventListener('mousemove', handleMove);
         htmelement.addEventListener('mousemove',()=>{
-            nums.style.opacity = '1';
+            if (nums) {
+                nums.style.opacity = '1';
+            }
         }); 
         htmelement.addEventListener('mouseleave',()=>{
-            nums.style.opacity = '0';
+            if (nums) {
+                nums.style.opacity = '0';
+            }
         });
         // handle touch for mobile devices
-        htmelement.addEventListener('touchmove', handleMove);
-        htmelement.addEventListener('touchmove',()=>{
-            nums.style.opacity = '1';
+        htmelement.addEventListener('touchmove', handleTouch, { passive: false });
+        htmelement.addEventListener('touchstart',()=>{
+            if (nums) {
+                nums.style.opacity = '1';
+            }
         }); 
         htmelement.addEventListener('touchend',()=>{
-            nums.style.opacity = '0';
+            if (nums) {
+                nums.style.opacity = '0';
+            }
         });
     })
 
     const handleMove = e =>{
         // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
-        const rect = nums.getBoundingClientRect(),
-            x = e.clientX - rect.x, 
-            y = e.clientY - rect.y;
+        if (nums) {
+            const rect = nums.getBoundingClientRect(),
+                x = e.clientX - rect.x, 
+                y = e.clientY - rect.y;
 
-        nums.style.setProperty("--x", `${x}px`);
-        nums.style.setProperty("--y", `${y}px`);
-        nums.innerText = randStr(77777);
+            nums.style.setProperty("--x", `${x}px`);
+            nums.style.setProperty("--y", `${y}px`);
+            nums.innerText = randStr(4000);
+
+        }
+    };
+    
+    const handleTouch = e =>{
+        e.preventDefault();
+        // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
+        if (nums) {
+            const rect = nums.getBoundingClientRect(),
+                x = e.touches[0].clientX - rect.x, 
+                y = e.touches[0].clientY - rect.y;
+
+            nums.style.setProperty("--x", `${x}px`);
+            nums.style.setProperty("--y", `${y}px`);
+            nums.innerText = randStr(4000);
+
+        }
 
     };
 
