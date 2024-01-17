@@ -67,12 +67,12 @@
         
         const htmelement = document.querySelector('html');
         htmelement.addEventListener('mousemove', handleMove);
-        htmelement.addEventListener('mousemove',dispnum);
-        htmelement.addEventListener('mouseleave',hidenum);
+        htmelement.addEventListener('mousemove',dispchars);
+        htmelement.addEventListener('mouseleave',hidechars);
         // handle touch for mobile devices
         htmelement.addEventListener('touchmove', handleTouch, { passive: false });
-        htmelement.addEventListener('touchstart',dispnum); 
-        htmelement.addEventListener('touchend',hidenum);
+        htmelement.addEventListener('touchstart',dispchars); 
+        htmelement.addEventListener('touchend',hidechars);
         // randomize bg on scroll
         document.addEventListener('scroll', randomizeBg);
         // randomize bg on set interval
@@ -80,13 +80,13 @@
             randomizeBg();
         }, 500);
 
-        function dispnum (){
+        function dispchars (){
             if (chars) {
                 chars.style.opacity = '1';
             }
         }
 
-        function hidenum(){
+        function hidechars(){
             if (chars) {
                 chars.style.opacity = '0';
             }
@@ -108,13 +108,13 @@
     const handleTouch = e =>{
         e.preventDefault();
         // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
-        if (nums) {
-            const rect = nums.getBoundingClientRect(),
+        if (chars) {
+            const rect = chars.getBoundingClientRect(),
                 x = e.touches[0].clientX - rect.x, 
                 y = e.touches[0].clientY - rect.y;
 
-            nums.style.setProperty("--x", `${x}px`);
-            nums.style.setProperty("--y", `${y}px`);
+            chars.style.setProperty("--x", `${x}px`);
+            chars.style.setProperty("--y", `${y}px`);
         }
 
     };
