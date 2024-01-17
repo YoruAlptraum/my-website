@@ -1,13 +1,15 @@
 <script>    
     import Cube from './cube.svelte';
     import Title from './dynamic_title.svelte';
-    import Numbers from './numbers.svelte';
     export let name;
 
 </script>
 
 <style>
     /* hero section */
+    #hero {
+        height: 100vh;
+    }
 
     .center-piece {
         position: absolute;
@@ -28,7 +30,7 @@
 
     #anim {
         position: absolute;
-        z-index: -1;    
+        z-index: -1;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -36,7 +38,7 @@
     
 </style>
 
-<section id="hero">
+<section class='section' id="hero">
     <div class="center-piece">
         <h1>{name}</h1>
         <Title/>
@@ -44,5 +46,4 @@
             <Cube w={500} h={500} color="#6900FD"/>
         </div>
     </div>
-    <Numbers />
 </section>

@@ -25,7 +25,7 @@
 
     .active,
     .nav-icon:hover{
-        color: #fff;
+        color: var(--radial3);
     }
 
     .nav-icon:active {
@@ -49,7 +49,7 @@
         });
 
         // highlight current nav icon
-        let sections = document.querySelectorAll('section');
+        let sections = document.querySelectorAll('.section');
         let navLinks = document.querySelectorAll('#nav-bar a');
         window.onscroll = () => {
         sections.forEach(sec => {

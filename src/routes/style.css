@@ -20,12 +20,9 @@
 
 body {
     background-color:  var(--bg-color); 
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-.wrapper {
-    overflow-y: scroll;
-}
 
 /* Was trying to change the scroll to be similar to the firefox scroll but ended up deciding to just disable the scroll-bar altogether, but this seems to be still required for some functions on the new scrolling*/
 ::-webkit-scrollbar {
@@ -41,8 +38,12 @@ body {
   border-radius: 20px;
 }
 
-section {
-    height: 100vh;
-    padding: 15vh 10vw;
-	scroll-snap-align: center;
+.section {
+  padding: 10vh 10vw;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 991px) {
+  /* Styles for smaller devices */
+  
 }
