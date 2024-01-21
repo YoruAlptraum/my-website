@@ -66,13 +66,9 @@
         const randomizeBg = () => {chars.innerText = randStr(strSize)}
         
         const htmelement = document.querySelector('html');
-        htmelement.addEventListener('mousemove', handleMove);
-        htmelement.addEventListener('mousemove',dispchars);
-        htmelement.addEventListener('mouseleave',hidechars);
-        // handle touch for mobile devices
-        htmelement.addEventListener('touchmove', handleTouch, { passive: false });
-        htmelement.addEventListener('touchstart',dispchars); 
-        htmelement.addEventListener('touchend',hidechars);
+        htmelement.addEventListener('pointermove', handleMove);
+        htmelement.addEventListener('pointermove',dispchars);
+        htmelement.addEventListener('pointerup',hidechars);
         // randomize bg on scroll
         document.addEventListener('scroll', randomizeBg);
         // randomize bg on set interval
@@ -83,12 +79,9 @@
         return () => {
             clearInterval(stringRandomizer);
 
-            htmelement.removeEventListener('mousemove', handleMove);
-            htmelement.removeEventListener('mousemove', dispchars);
-            htmelement.removeEventListener('mouseleave', hidechars);
-            htmelement.removeEventListener('touchmove', handleTouch, { passive: false });
-            htmelement.removeEventListener('touchstart', dispchars);
-            htmelement.removeEventListener('touchend', hidechars);
+            htmelement.removeEventListener('pointermove', handleMove);
+            htmelement.removeEventListener('pointermove', dispchars);
+            htmelement.removeEventListener('pointerup', hidechars);
             document.removeEventListener('scroll', randomizeBg);
         };
     })
@@ -115,18 +108,6 @@
             chars.style.setProperty("--x", `${x}px`);
             chars.style.setProperty("--y", `${y}px`);
         }
-    };
-    
-    const handleTouch = e =>{
-        if (chars) {
-            const rect = chars.getBoundingClientRect(),
-                x = e.touches[0].clientX - rect.x, 
-                y = e.touches[0].clientY - rect.y;
-
-            chars.style.setProperty("--x", `${x}px`);
-            chars.style.setProperty("--y", `${y}px`);
-        }
-
     };
 
 </script>

@@ -68,6 +68,7 @@
 	:global(.inactive) {
 		filter: brightness(25%) grayscale(50%);
 	}
+	
 </style>
 
 <script>
@@ -97,15 +98,15 @@
 		};
 
 		projects.forEach((element) => {
-			element.addEventListener('mouseover', handleMouseOver(element));
-			element.addEventListener('mouseout', handleMouseOut(element));
+			element.addEventListener('pointerover', handleMouseOver(element));
+			element.addEventListener('pointerout', handleMouseOut(element));
 		});
 
 		// Cleanup on component unmount
 		return () => {
 			projects.forEach((element) => {
-				element.removeEventListener('mouseover', handleMouseOver);
-				element.removeEventListener('mouseout', handleMouseOut);
+				element.removeEventListener('pointerover', handleMouseOver);
+				element.removeEventListener('pointerout', handleMouseOut);
 			});
 		};
 
@@ -121,12 +122,10 @@
 		<div class="right">
 			<h4>Web Scraping</h4>
 			<p>
-				Extracting, cleaning and exporting website data to a excel file for easy to utilize data.<br
+				Extracting, cleaning and exporting website data to Excel for easy data visualization and utilization.<br
 				/><br />
-				Using beautiful soup it is really easy to get data from a site but it takes some time to check
-				for inconsistencies on the site structure and to clean up the data. <br /><br />
-				By extracting data from the site I'm also able to automate the download of all images on the
-				site to a local folder.
+				Using beautiful soup it's easy to retrieve data from a website but it takes some time to check for inconsistencies on the site structure and clean up the data. <br /><br />
+				By extracting data from the site I was also able to automate the download of all site images to a local folder.
 			</p>
 			<ul class="techs">
 				<li class="tech">Python</li>
@@ -144,8 +143,7 @@
 			<h4>PIT SENAI</h4>
 			<p>
 				The PIT is the final project for the IT course in SENAI. <br /><br />
-				For my final project I made a simple stock management app that allows for the registration of
-				new items or clients as well as different levels of user access to manage the app.
+				For my final project, I made a simple stock management app that allows for the registration of new items or clients as well as different levels of user access to manage the app.
 			</p>
 			<ul class="techs">
 				<li class="tech">C#</li>

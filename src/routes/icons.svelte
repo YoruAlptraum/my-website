@@ -135,6 +135,27 @@
     h3 {
         text-wrap: nowrap;
     }
+    
+    .note {
+        text-wrap: nowrap;
+        position: absolute;
+        bottom: 5px;
+        text-align: center;
+        color: #666;
+        animation: fade-in 3s;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        70% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 
 </style>
 
@@ -204,4 +225,6 @@
             <span>ozawathiago@gmail.com</span>
         </a>
     </li>
+    
+    <p class='note {noDisp}'>This website was made using js framework svelte</p>
 </ul>

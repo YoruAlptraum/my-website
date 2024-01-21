@@ -1,4 +1,3 @@
-
 <script>
     import './style.css';
     import Navbar from './navbar.svelte';

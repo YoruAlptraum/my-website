@@ -97,7 +97,7 @@
             <p>Hi, I'm Thiago Ozawa, <br><br>
             I'm a brazilian Software Engineering student passionate about tasks automation, data and details. 
             Some of my other interests include games, mangas, animes, behavioural biology and A.I.<br><br>
-            It always fascinated me to see and try to understand how things work. How they move, develop, and interact with the world around them. I'ts always a sight to see the incredible things that can emerge from the smallest of details.
+            It always fascinated me to see and try to understand how things work. How they move, develop, and interact with the world around them. It's always a sight to see the incredible things that can emerge from the smallest of details.
         </div>
     </div>
 </section>
