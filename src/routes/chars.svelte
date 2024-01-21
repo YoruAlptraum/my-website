@@ -76,7 +76,7 @@
         // randomize bg on scroll
         document.addEventListener('scroll', randomizeBg);
         // randomize bg on set interval
-        setInterval(function() {
+        const stringRandomizer = setInterval(function() {
             randomizeBg();
         }, 500);
 
@@ -91,6 +91,18 @@
                 chars.style.opacity = '0';
             }
         }
+
+        onDestroy(() => {
+            clearInterval(stringRandomizer);
+
+            htmelement.removeEventListener('mousemove', handleMove);
+            htmelement.removeEventListener('mousemove', dispchars);
+            htmelement.removeEventListener('mouseleave', hidechars);
+            htmelement.removeEventListener('touchmove', handleTouch, { passive: false });
+            htmelement.removeEventListener('touchstart', dispchars);
+            htmelement.removeEventListener('touchend', hidechars);
+            document.removeEventListener('scroll', randomizeBg);
+        });
     })
 
     const handleMove = e =>{
@@ -106,7 +118,8 @@
     };
     
     const handleTouch = e =>{
-        e.preventDefault();
+        // enable prevent default to stop scroll for touch
+        // e.preventDefault();
         // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
         if (chars) {
             const rect = chars.getBoundingClientRect(),

@@ -12,10 +12,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth !important;
     scroll-snap-type: y mandatory;
+    color: #fff;
+
 }
 
 body {
@@ -40,10 +41,13 @@ body {
 
 .section {
   padding: 10vh 10vw;
-  height: 100vh;
 }
 
 @media only screen and (max-width: 991px) {
   /* Styles for smaller devices */
   
+}
+
+.highlight {
+  color: var(--radial3);
 }

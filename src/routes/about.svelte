@@ -1,17 +1,15 @@
 <style>
     #about {
-        height: 80vh;
-        align-items: center;
+        background: radial-gradient(var(--bg-color) 30%, transparent, transparent);
     }
 
     .inner-wrapper {
-        position: relative;
+        margin: auto;
+        padding-top: 15vh;
+        padding-bottom: 20vh;
         display: grid;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         grid-template-columns: 1fr 2fr;
-        gap: 2rem;
+        gap: 1rem;
         width: 50vw;
     }
 
@@ -21,8 +19,8 @@
         flex-direction: column;
         gap: .5rem;
         justify-content: space-evenly;
-
     }
+    
     .right {
         text-align: justify;
     }
@@ -40,6 +38,12 @@
         scale: .95;
     }
 
+    a:hover p{
+        transform: translateX(10%);
+        scale: 1.1;
+        color: var(--radial3);
+    }
+
     a::after {
         margin: .3rem auto;
         content: "";
@@ -49,20 +53,11 @@
         background-color: var(--radial3); /* Adjust the color of the line as needed */
     }
 
-    .section {
-        background: radial-gradient(var(--bg-color) 30%, transparent, transparent);
-    }
-
     @media only screen and (max-width: 990px) {
         /* Styles for tablets */  
         .inner-wrapper {
             grid-template-columns: 1fr;
-            gap: 4rem;
-        }
-
-        .left {
-            text-align: center;    
-            align-items: center;        
+            gap: 2rem;
         }
     }
 
@@ -83,9 +78,8 @@
 
 <section class='section' id="about">
     <div class="inner-wrapper">
-        <!-- add a good morning/afternoon/evening depending on user clock -->
         <div class="left">
-            <strong style='color: var(--radial3)'>About me</strong>
+            <h3 class='highlight'>About me</h3>
             <h2>Full stack <br> Software Developer</h2>
             <a href="https://github.com/YoruAlptraum" target="_blank">
                 <p>Take a look at my github</p>
@@ -93,7 +87,8 @@
         </div>
         <div class="right">
             <p>Hi, I'm Thiago Ozawa, <br><br>
-            I'm a brazilian Software Engineering student passionate about tasks automation, data and details. Some of my other interests include games, mangas, animes, behavioural biology and A.I.<br><br>
+            I'm a brazilian Software Engineering student passionate about tasks automation, data and details. 
+            Some of my other interests include games, mangas, animes, behavioural biology and A.I.<br><br>
             It always fascinated me to see and try to understand how things work. How they move, develop, and interact with the world around them. I'ts always a sight to see the incredible things that can emerge from the smallest of details.
         </div>
     </div>
