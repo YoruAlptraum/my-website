@@ -79,20 +79,8 @@
         const stringRandomizer = setInterval(function() {
             randomizeBg();
         }, 500);
-
-        function dispchars (){
-            if (chars) {
-                chars.style.opacity = '1';
-            }
-        }
-
-        function hidechars(){
-            if (chars) {
-                chars.style.opacity = '0';
-            }
-        }
-
-        onDestroy(() => {
+        
+        return () => {
             clearInterval(stringRandomizer);
 
             htmelement.removeEventListener('mousemove', handleMove);
@@ -102,11 +90,23 @@
             htmelement.removeEventListener('touchstart', dispchars);
             htmelement.removeEventListener('touchend', hidechars);
             document.removeEventListener('scroll', randomizeBg);
-        });
+        };
     })
 
+
+    function dispchars (){
+        if (chars) {
+            chars.style.opacity = '1';
+        }
+    }
+
+    function hidechars(){
+        if (chars) {
+            chars.style.opacity = '0';
+        }
+    }
+
     const handleMove = e =>{
-        // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
         if (chars) {
             const rect = chars.getBoundingClientRect(),
                 x = e.clientX - rect.x, 
@@ -118,9 +118,6 @@
     };
     
     const handleTouch = e =>{
-        // enable prevent default to stop scroll for touch
-        // e.preventDefault();
-        // the rect constant makes sure the coordinates are relative to the element, this is noticeable when the element is not fullscreen size
         if (chars) {
             const rect = chars.getBoundingClientRect(),
                 x = e.touches[0].clientX - rect.x, 
