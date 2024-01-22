@@ -8,7 +8,7 @@
         width: 80vw;
         z-index: 5;
         padding: 1vh 4vw;
-        margin: .5vw;
+        margin-top: .5vw;
         left: 50%;
         transform: translateX(-50%);
 
