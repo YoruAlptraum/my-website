@@ -2,6 +2,6 @@
 
 Sketched on figma and made with sveltekit
 
-I'll be adding a projects section soon, but for now it's only a hero section and contact links
+Feel free to let me know if there are any issues with the site
 
-I also plan to add more features and interesting effects to the site
+I also plan to add more to the site from time to time

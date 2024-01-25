@@ -24,11 +24,13 @@
             #ffffff25,
             transparent
         );
-        font-size: 1.7rem;
+        font-size: 35px;
+        line-height: 40px;
         font-weight: 350;
         opacity: 0;
         z-index: -2;
         transition: opacity 1s;
+        scale: 1.1;
     }
 
     #gradient {
@@ -47,13 +49,14 @@
         mix-blend-mode: darken;
     }
 
-
 </style>
 
 <script>
 	import { onMount } from "svelte";
     let chars;
-    let strSize = 8000;
+    let strSize = 1;
+    let screenWidth;
+    let screenHeight;
     
     const charsList = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ";
 
@@ -62,30 +65,55 @@
 
     onMount(()=>{
         chars = document.querySelector('#chars');
-        chars.innerText = randStr(strSize);
+        updateSize();
+
         const randomizeBg = () => {chars.innerText = randStr(strSize)}
-        
+        randomizeBg();
         const htmelement = document.querySelector('html');
+
+        window.addEventListener('resize', updateSize);
+        window.addEventListener('resize', randomizeBg);
+        document.addEventListener('scroll', randomizeBg);
+
         htmelement.addEventListener('pointermove', handleMove);
         htmelement.addEventListener('pointermove',dispchars);
-        htmelement.addEventListener('pointerup',hidechars);
-        // randomize bg on scroll
-        document.addEventListener('scroll', randomizeBg);
-        // randomize bg on set interval
-        const stringRandomizer = setInterval(function() {
-            randomizeBg();
-        }, 500);
+        // mobile event listeners
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            htmelement.addEventListener('touchmove', handleMove, { passive: false });            
+            htmelement.addEventListener('touchend', hidechars);
+        } else{
+            htmelement.addEventListener('pointerleave', hidechars);
+        }
         
+        const stringRandomizer = setInterval(randomizeBg(), 500);
+        
+        // randomize bg on scroll
+        // randomize bg on set interval
         return () => {
-            clearInterval(stringRandomizer);
+            window.removeEventListener('resize', updateSize);
+            window.removeEventListener('resize', randomizeBg);
+            document.removeEventListener('scroll', randomizeBg);
 
             htmelement.removeEventListener('pointermove', handleMove);
             htmelement.removeEventListener('pointermove', dispchars);
-            htmelement.removeEventListener('pointerup', hidechars);
-            document.removeEventListener('scroll', randomizeBg);
+            htmelement.removeEventListener('pointerleave', hidechars);
+
+            htmelement.removeEventListener('touchmove', handleMove, { passive: false });
+            htmelement.removeEventListener('touchend', hidechars);
+
+            clearInterval(stringRandomizer);
+
         };
     })
 
+    function updateSize(){
+            // calculate window size
+            screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            // calc aprox how many chars fit in the screen height and width
+            strSize = (Math.round(screenHeight / 35) + 1)  * (Math.round(screenWidth/35) + 1);
+            // console.log(screenHeight,screenWidth,strSize);
+    }    
 
     function dispchars (){
         if (chars) {
@@ -101,9 +129,18 @@
 
     const handleMove = e =>{
         if (chars) {
-            const rect = chars.getBoundingClientRect(),
+            const rect = chars.getBoundingClientRect()
+            let x = 0
+            let y = 0;
+            
+            if(e.touches) {
+                x = e.touches[0].clientX - rect.x, 
+                y = e.touches[0].clientY - rect.y;
+            }
+            else {
                 x = e.clientX - rect.x, 
                 y = e.clientY - rect.y;
+            }
 
             chars.style.setProperty("--x", `${x}px`);
             chars.style.setProperty("--y", `${y}px`);
