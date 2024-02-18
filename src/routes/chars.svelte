@@ -73,6 +73,7 @@
 
         window.addEventListener('resize', updateSize);
         window.addEventListener('resize', randomizeBg);
+        // randomize bg on scroll
         document.addEventListener('scroll', randomizeBg);
 
         htmelement.addEventListener('pointermove', handleMove);
@@ -85,10 +86,9 @@
             htmelement.addEventListener('pointerleave', hidechars);
         }
         
-        const stringRandomizer = setInterval(randomizeBg(), 500);
-        
-        // randomize bg on scroll
         // randomize bg on set interval
+        const stringRandomizer = setInterval(randomizeBg, 1000);
+        
         return () => {
             window.removeEventListener('resize', updateSize);
             window.removeEventListener('resize', randomizeBg);

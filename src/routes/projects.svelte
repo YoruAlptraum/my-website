@@ -73,6 +73,7 @@
 
 <script>
 	import { onMount } from 'svelte';
+	import { projectList } from './projects.js'
 
 	onMount(() => {
 		const projects = document.querySelectorAll('.project');
@@ -115,42 +116,24 @@
 
 <section class="section" id="projects">
 	<h3 class="highlight">Projects</h3>
-	<a class="project" href="https://github.com/YoruAlptraum/web-scraper-tests" target="_blank">
-		<div class="left">
-			<img src="./web_scraping.png" alt="Project_image" />
-		</div>
-		<div class="right">
-			<h4>Web Scraping</h4>
-			<p>
-				Extracting, cleaning and exporting website data to Excel for easy data visualization and utilization.<br
-				/><br />
-				Using beautiful soup it's easy to retrieve data from a website but it takes some time to check for inconsistencies on the site structure and clean up the data. <br /><br />
-				By extracting data from the site I was also able to automate the download of all site images to a local folder.
-			</p>
-			<ul class="techs">
-				<li class="tech">Python</li>
-				<li class="tech">Beautiful Soup</li>
-				<li class="tech">Pandas</li>
-				<li class="tech">Google Colab</li>
-			</ul>
-		</div>
-	</a>
-	<a class="project" href="https://github.com/YoruAlptraum/pit-senai-v2" target="_blank">
-		<div class="left">
-			<img src="./pit.png" alt="Project_image" />
-		</div>
-		<div class="right">
-			<h4>PIT SENAI</h4>
-			<p>
-				The PIT is the final project for the IT course in SENAI. <br /><br />
-				For my final project, I made a simple stock management app that allows for the registration of new items or clients as well as different levels of user access to manage the app.
-			</p>
-			<ul class="techs">
-				<li class="tech">C#</li>
-				<li class="tech">Windows Forms</li>
-				<li class="tech">MySQL</li>
-			</ul>
-		</div>
-	</a>
-
+	{#each projectList as project}
+		<a class="project" href={project.link} target="_blank">
+			{#if project.img}
+				<div class="left">
+					<img src={project.img} alt="{project.title} - Project image" />
+				</div>				
+			{/if}
+			<div class="right">
+				<h4>{project.title}</h4>
+				<p>
+					{@html project.inner}
+				</p>
+				<ul class="techs">
+					{#each project.techs as tech}
+						<li class="tech">{tech}</li>
+					{/each}
+				</ul>
+			</div>
+		</a>
+	{/each}
 </section>
