@@ -20,8 +20,8 @@ export const projectList = [
         "link": "https://github.com/YoruAlptraum/no-splash-opera-gx",
         "img": "./no_splash.png",
         "title": "No splash for Opera GX",
-        "inner": "This app creates a action in windows task scheduler that runs right after Opera GX scheduler checks for updates and deletes the splash screen exe from latest release folder to completely prevent the browser from displaying its splash screen. <br/><br/> A very small and simple project but it is a project that has helped me learn a lot about what scripting applications can really do.",
-        "techs": ["Python","py2exe","regex"]
+        "inner": "This script intercepts Opera GX shortcuts and executes a script that deletes the splash screen exe from latest release folder before launching the app to completely prevent the browser splash screen animation. <br/><br/> A very small and simple project but it is a project that has helped me learn a lot about what scripting applications can really do.",
+        "techs": ["VBScript","batch","regex"]
     },
     {
         "link": "https://github.com/YoruAlptraum/web-scraper-tests",
