@@ -1,6 +1,6 @@
-# Hello, wellcome to my website's github page
+# Hello, welcome to my website's github page
 
-Sketched on figma and made with sveltekit
+Sketched on figma and made with svelte
 
 Feel free to let me know if there are any issues with the site
 
